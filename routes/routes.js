@@ -1,8 +1,8 @@
 import express from "express";
 import {resetPassword, userSignIn, userSignUp } from "../auth/user.js";
 import { adminSignIn, adminSignUp, resetPasswordAdmin } from "../auth/admin.js";
-import { addItemToCart, deleteItemFromCart, getCartDetails, getPurchasedHistory, updateUserInfo } from "../user/usercontrollers.js";
-import { addProduct, deleteProduct, deleteuser, getAllProducts, getAllUsers, productDetail } from "../admin/admincontrollers.js";
+import { addItemToCart, deleteItemFromCart, getCartDetails, getProducts, getPurchasedHistory, updateUserInfo } from "../user/usercontrollers.js";
+import { addProduct, deleteProduct, deleteuser, getAllProducts, getAllUsers, productDetail, updateProductQuantity } from "../admin/admincontrollers.js";
 const routes=express.Router();
 
 
@@ -16,7 +16,7 @@ routes.get('/getPurchasedHistory',getPurchasedHistory);
 routes.put('/additemtocart/:id',addItemToCart);
 routes.put('/deleteitemfromcart/:id',deleteItemFromCart);
 routes.put('/updateuserinfo',updateUserInfo);
-
+routes.get('/getproducts',getProducts);
 
 // admin route
 
@@ -29,4 +29,5 @@ routes.get('/product-detail/:id',productDetail);
 routes.post('/addproduct',addProduct);
 routes.delete('/deleteuser/:email',deleteuser);
 routes.delete('/deleteproduct.:id',deleteProduct);
+routes.put('/updateproductquantity/:id',updateProductQuantity);
 export default routes;
