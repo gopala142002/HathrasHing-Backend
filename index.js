@@ -1,8 +1,8 @@
 import express from "express";
 import dotenv from "dotenv";
 import cors from "cors";
-import routes1 from "./routes/admin.js";
-import routes2 from "./routes/user.js";
+import routes1 from "./routes/apis/admin.js";
+import routes2 from "./routes/apis/user.js";
 const app=express();
 app.use(cors());
 dotenv.config();

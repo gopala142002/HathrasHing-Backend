@@ -9,7 +9,6 @@ export const GetPurchasedHistory = async (req, res) => {
     const email = req.body.email;
     const docRef = doc(database, "users", email);
     const user = await getDoc(docRef);
-    console.log(user.data());
     res.send({ success: true, purchasedHistory: user.data().purchasedHistory });
   } catch (error) {
     res.send({

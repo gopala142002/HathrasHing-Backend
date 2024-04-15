@@ -1,7 +1,7 @@
 import express from "express";
-import { AddProduct, DeleteProduct, GetAllProducts, ProductDetail, UpdateProductQuantity } from "../Controller/Admin/product.js";
-import { DeleteUser, GetAllUsers } from "../Controller/Admin/admin.js";
-import { AdminSignIn, AdminSignUp, ResetPasswordAdmin } from "../Controller/auth/admin.js";
+import { AddProduct, DeleteProduct, GetAllProducts, ProductDetail, UpdateProductQuantity } from "../../Controller/Admin/product.js";
+import { DeleteUser, GetAllUsers } from "../../Controller/Admin/admin.js";
+import { AdminSignIn, AdminSignUp, ResetPasswordAdmin } from "../../Controller/auth/admin.js";
 const routes1=express.Router();
 
 // admin route
