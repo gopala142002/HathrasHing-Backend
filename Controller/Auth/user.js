@@ -5,10 +5,10 @@ import {
   sendPasswordResetEmail,
 } from "firebase/auth";
 import { doc, getDoc, setDoc } from "firebase/firestore";
-import { app, database } from "../config.js";
+import { app, database } from "../../config.js";
 
 // controller for user sign-up
-export const userSignUp = async (req, res) => {
+export const UserSignUp = async (req, res) => {
   const auth = getAuth();
   const email = req.body.email;
   const password = req.body.password;
@@ -39,7 +39,7 @@ export const userSignUp = async (req, res) => {
 };
 
 // controller for user sign-in
-export const userSignIn = async (req, res) => {
+export const UserSignIn = async (req, res) => {
   const auth = getAuth();
   const email = req.body.email;
   const password = req.body.password;
@@ -67,7 +67,7 @@ export const userSignIn = async (req, res) => {
 };
 
 //controller to reset password
-export const resetPassword = (req, res) => {
+export const ResetPassword = (req, res) => {
   try {
     const email = req.body.email;
     const auth = getAuth();

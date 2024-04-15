@@ -6,7 +6,7 @@ import {
 import { getDoc, setDoc } from "firebase/firestore";
 
 // controller for admin-sign-up
-export const adminSignUp = async (req, res) => {
+export const AdminSignUp = async (req, res) => {
   const auth = getAuth();
   const email = req.body.email;
   const password = req.body.password;
@@ -37,7 +37,7 @@ export const adminSignUp = async (req, res) => {
 };
 
 // controller for admin-sign-in
-export const adminSignIn = async (req, res) => {
+export const AdminSignIn = async (req, res) => {
   const auth = getAuth();
   const email = req.body.email;
   const password = req.body.password;
@@ -70,7 +70,7 @@ export const adminSignIn = async (req, res) => {
 };
 
 //controller to reset password for admin
-export const resetPasswordAdmin = (req, res) => {
+export const ResetPasswordAdmin = (req, res) => {
   try {
     const email = req.body.email;
     const auth = getAuth();
