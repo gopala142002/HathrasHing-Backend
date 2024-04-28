@@ -3,7 +3,8 @@ import {
   createUserWithEmailAndPassword,
   signInWithEmailAndPassword,
 } from "firebase/auth";
-import { getDoc, setDoc } from "firebase/firestore";
+import { doc, getDoc, setDoc } from "firebase/firestore";
+import { app, database } from "../../config.js";
 
 // controller for admin-sign-up
 export const AdminSignUp = async (req, res) => {
@@ -41,7 +42,7 @@ export const AdminSignIn = async (req, res) => {
   const auth = getAuth();
   const email = req.body.email;
   const password = req.body.password;
-  const docRef = doc(data, "Admins", email);
+  const docRef = doc(database, "Admins", email);
   const admin = await getDoc(docRef);
   if (admin.exists()) {
     signInWithEmailAndPassword(auth, email, password)
@@ -50,7 +51,7 @@ export const AdminSignIn = async (req, res) => {
         const user = userCredential.user;
         res.send({
           success: true,
-          message: "User Signed In Successfully",
+          message: "Admin Signed In Successfully",
           user: user,
         });
       })
@@ -66,29 +67,5 @@ export const AdminSignIn = async (req, res) => {
   }
   else{
     res.send({success:false , message:"Invalid Crendentials !!!"});
-  }
-};
-
-//controller to reset password for admin
-export const ResetPasswordAdmin = (req, res) => {
-  try {
-    const email = req.body.email;
-    const auth = getAuth();
-    sendPasswordResetEmail(auth, email)
-      .then(() => {
-        res.send({
-          success: true,
-          message: "Password reset link sent successfully!!!",
-        });
-      })
-      .catch((error) => {
-        res.send({
-          success: false,
-          message: "Could'nt share password rest link!!!",
-          error: error,
-        });
-      });
-  } catch (error) {
-    res.send({ success: false, message: "Could'nt reset password" });
   }
 };

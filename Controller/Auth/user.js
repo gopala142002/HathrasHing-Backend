@@ -67,11 +67,11 @@ export const UserSignIn = async (req, res) => {
 };
 
 //controller to reset password
-export const ResetPassword = (req, res) => {
+export const ResetPassword = async(req, res) => {
   try {
     const email = req.body.email;
     const auth = getAuth();
-    sendPasswordResetEmail(auth, email)
+    await sendPasswordResetEmail(auth, email)
       .then(() => {
         res.send({
           success: true,

@@ -80,7 +80,7 @@ export const ProductDetail = async (req, res) => {
 
 export const DeleteProduct = async (req, res) => {
   try {
-    const email = req.params["id"];
+    const id = req.params["id"];
     const docRef = doc(database, "users", id);
     await deleteDoc(docRef)
       .then(() => {
@@ -104,21 +104,11 @@ export const UpdateProductQuantity = async (req, res) => {
     const productID = req.params["id"];
     const docRef = doc(database, "products", productID);
     const quantity = req.body.quantity;
-    updateDoc(docRef, {
+    console.log(productID,quantity);
+    await updateDoc(docRef, {
       quantity: quantity,
     })
-      .then(() => {
-        req.send({
-          success: true,
-          message: "Product quantity updates successfully !!!",
-        });
-      })
-      .catch((err) => {
-        res.send({
-          success: false,
-          message: "Could not update product quantity !!!",
-        });
-      });
+    res.send({success:true,message:"Product quantity updated successfully !!!"});
   } catch (error) {
     res.send({
       success: false,
